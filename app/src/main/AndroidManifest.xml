@@ -12,7 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TonePack">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.mypage.MyPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.community.CommunityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.editor.EditorViewModel"
+            android:exported="false" />
+        <activity
+            android:name=".ui.editor.AddTemplateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.detail.DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name="ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
