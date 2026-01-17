@@ -1,9 +1,25 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.TonePack" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.TonePack" parent="Theme.Material3.DayNight.NoActionBar">
+
+
+        <item name="colorPrimary">@color/TP_Blue</item>
+        <item name="colorOnPrimary">@color/TP_White</item>
+
+        <item name="colorSecondary">@color/TP_Blue</item>
+        <item name="colorOnSecondary">@color/TP_White</item>
+
+
+        <item name="colorSurface">@color/TP_White</item>
+        <item name="colorOnSurface">@color/TP_TextPrimary</item>
+
+        <item name="colorSurfaceVariant">@color/TP_White</item>
+        <item name="colorOnSurfaceVariant">@color/TP_TextPrimary</item>
+
+
+        <item name="android:windowBackground">@drawable/bg_gradient</item>
+
     </style>
 
-    <style name="Theme.TonePack" parent="Base.Theme.TonePack" />
 </resources>
