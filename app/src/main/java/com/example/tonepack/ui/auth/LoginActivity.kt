@@ -18,4 +18,8 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
     }
+    btnLogin.setOnClickListener {
+        startActivity(Intent(this, MainActivity::class.java))
+    }
+
 }

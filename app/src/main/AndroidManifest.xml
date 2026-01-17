@@ -11,39 +11,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TonePack">
-        <activity
-            android:name=".ui.mypage.MyPageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.community.CommunityActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.editor.EditorViewModel"
-            android:exported="false" />
-        <activity
-            android:name=".ui.editor.AddTemplateActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.detail.DetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.main.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.auth.RegisterActivity"
-            android:exported="false" />
+
+        <!-- 🔹 런처: 로그인 화면 (UI 확인용) -->
         <activity
             android:name=".ui.auth.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name="ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 🔹 나머지 Activity들 -->
+        <activity
+            android:name=".ui.auth.RegisterActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.detail.DetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.editor.AddTemplateActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.community.CommunityActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.mypage.MyPageActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

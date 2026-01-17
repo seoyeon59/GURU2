@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="TP_Blue">#0047AB</color>
+    <color name="TP_Blue2">#2F6BFF</color>
+    <color name="TP_White">#FFFFFF</color>
+
+    <color name="TP_TitleNavy">#15366F</color>
+    <color name="TP_TextPrimary">#1C2A4A</color>
+    <color name="TP_TextSecondary">#6B7A99</color>
+
+    <color name="TP_InputBg">#F3F6FF</color>
+    <color name="TP_Border">#E6ECFF</color>
+    <color name="TP_Divider">#EEF2FF</color>
 </resources>
