@@ -3,7 +3,7 @@ package com.example.tonepack.data.seed
 import com.example.tonepack.data.local.entity.Template
 import com.example.tonepack.data.local.entity.User
 
-class SeedData {
+object SeedData {
     // 유저 ID 직접 생성
     val adminUser = User(
         id = "guru2",
