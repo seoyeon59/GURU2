@@ -1,77 +1,29 @@
 package com.example.tonepack.ui.editor
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tonepack.App
-import com.example.tonepack.data.local.entity.Template
+import com.example.tonepack.data.local.entity.TemplateEntity
+import com.example.tonepack.data.repository.TemplateRepository
 import kotlinx.coroutines.launch
 
-class EditorViewModel(application: Application) : AndroidViewModel(application) {
+/**
+ * 템플릿 추가(에디터) 페이지의 두뇌
+ * 민경 담당: 사용자가 입력한 템플릿 정보를 DB로 전달하는 역할
+ */
+class EditorViewModel(private val repository: TemplateRepository) : ViewModel() {
 
-    private val repository = (application as App).templateRepository
-    private val sessionManager = (application as App).sessionManager
-
-    private val _saveSuccess = MutableLiveData<Boolean>()
-    val saveSuccess: LiveData<Boolean> = _saveSuccess
-
-    private val _errorMessage = MutableLiveData<String>()
-    val errorMessage: LiveData<String> = _errorMessage
-
-    // 입력값 검증 후 새 템플릿 저장
-    fun saveTemplate(
-        title: String,
-        content: String,
-        situation: String,
-        target: String
-    ) {
-        // 입력값 검증
-        if (title.isBlank()) {
-            _errorMessage.value = "제목을 입력해주세요."
-            return
-        }
-        if (content.isBlank()) {
-            _errorMessage.value = "내용을 입력해주세요."
-            return
-        }
-
-        if (situation.isBlank() || situation == "선택하세요") {
-            _errorMessage.value = "상황을 선택해주세요."
-            return
-        }
-        if (target.isBlank() || target == "선택하세요") {
-            _errorMessage.value = "상대를 선택해주세요."
-            return
-        }
-
-        val userId = sessionManager.getUserId()
-        if (userId == null) {
-            _errorMessage.value = "로그인이 필요합니다."
-            return
-        }
-
-        // Template 객체 생성 및 DB 저장
-        val template = Template(
-            authorId = userId,
-            title = title,
-            content = content,
-            situation = situation,
-            target = target,
-            likeCount = 0,
-            dislikeCount = 0
-        )
-
+    // [민경 담당] 사용자가 입력한 제목과 내용을 받아서 저장하는 함수
+    fun saveTemplate(title: String, content: String) {
         viewModelScope.launch {
-            try {
-                repository.insertTemplate(template)
-                _saveSuccess.value = true
-            } catch (e: Exception) {
-                e.printStackTrace()
-                _errorMessage.value = "저장에 실패했습니다: ${e.message}"
-                _saveSuccess.value = false
-            }
+            // 1. 입력된 텍스트들을 TemplateEntity라는 상자에 예쁘게 담기
+            val newTemplate = TemplateEntity(
+                title = title,
+                content = content,
+                likeCount = 0 // 새로 만드는 거니까 추천수는 0부터 시작!
+            )
+
+            // 2. 창고(Repository)에게 이 상자를 저장해달라고 시키기
+            repository.insertTemplate(newTemplate)
         }
     }
 }

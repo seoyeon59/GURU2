@@ -1,100 +1,58 @@
 package com.example.tonepack.ui.detail
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import com.example.tonepack.R
+import androidx.lifecycle.lifecycleScope
+import com.example.tonepack.databinding.ActivityDetailBinding
+import com.example.tonepack.navigation.IntentKeys
 import com.example.tonepack.util.ClipboardUtil
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class DetailActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityDetailBinding
+
+    // 1. 민경님이 만든 뷰모델 연결하기!
+    // (지금은 빨간 줄이 뜰 수 있어요, 이따 해결법 알려드릴게요!)
     private val viewModel: DetailViewModel by viewModels()
-
-    private lateinit var tvTitle: TextView
-    private lateinit var tvContent: TextView
-    private lateinit var tvSituation: TextView
-    private lateinit var tvTarget: TextView
-    private lateinit var tvLikeCount: TextView
-    private lateinit var tvDislikeCount: TextView
-    private lateinit var btnCopy: Button
-    private lateinit var btnLike: Button
-    private lateinit var btnDislike: Button
-
-    private var currentTemplateId: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        currentTemplateId = intent.getIntExtra("TEMPLATE_ID", -1)
+        // 2. [협업 포인트] 현주님이 넘겨준 템플릿 ID 받기
+        val templateId = intent.getIntExtra(IntentKeys.TEMPLATE_ID, -1)
 
-        if (currentTemplateId == -1) {
-            Toast.makeText(this, "잘못된 접근입니다.", Toast.LENGTH_SHORT).show()
-            finish()
-            return
+        if (templateId != -1) {
+            // 뷰모델아, 이 ID로 데이터 좀 가져와줘!
+            viewModel.loadTemplate(templateId)
         }
 
-        initViews()
-        observeViewModel()
-        setupListeners()
-
-        viewModel.loadTemplate(currentTemplateId)
-    }
-
-    private fun initViews() {
-        tvTitle = findViewById(R.id.tvDetailTitle)
-        tvContent = findViewById(R.id.tvDetailContent)
-        tvSituation = findViewById(R.id.tvDetailSituation)
-        tvTarget = findViewById(R.id.tvDetailTarget)
-        tvLikeCount = findViewById(R.id.tvLikeCount)
-        tvDislikeCount = findViewById(R.id.tvDislikeCount)
-        btnCopy = findViewById(R.id.btnCopy)
-        btnLike = findViewById(R.id.btnLike)
-        btnDislike = findViewById(R.id.btnDislike)
-    }
-
-    // LiveData 관찰을 통한 UI 자동 업데이트
-    private fun observeViewModel() {
-        viewModel.template.observe(this, Observer { template ->
-            template?.let {
-                tvTitle.text = it.title
-                tvContent.text = it.content
-                tvSituation.text = "상황: ${it.situation}"
-                tvTarget.text = "상대: ${it.target}"
-                tvLikeCount.text = "👍 ${it.likeCount}"
-                tvDislikeCount.text = "👎 ${it.dislikeCount}"
-            }
-        })
-
-        viewModel.isLoading.observe(this, Observer { isLoading ->
-            // 로딩 상태에 따른 UI 처리 필요 시 작성
-        })
-    }
-
-    private fun setupListeners() {
-        // 클립보드 복사 기능
-        btnCopy.setOnClickListener {
-            val content = viewModel.template.value?.content ?: ""
-            if (content.isNotEmpty()) {
-                ClipboardUtil.copyToClipboard(this, content)
-                Toast.makeText(this, "클립보드에 복사되었습니다 📋", Toast.LENGTH_SHORT).show()
+        // 3. 뷰모델이 가져온 데이터를 화면에 뿌려주기 (관찰하기)
+        lifecycleScope.launch {
+            viewModel.template.collectLatest { template ->
+                template?.let {
+                    binding.tvTitle.text = it.title        // 제목 세팅
+                    binding.tvContent.text = it.content    // 내용 세팅
+                    binding.tvLikeCount.text = it.likeCount.toString() // 추천수
+                }
             }
         }
 
-        // 추천 클릭 이벤트
-        btnLike.setOnClickListener {
-            viewModel.onLikeClicked(currentTemplateId)
-            Toast.makeText(this, "추천했습니다! 👍", Toast.LENGTH_SHORT).show()
+        // 4. [민경 담당] 복사 버튼 클릭 이벤트 (ClipboardUtil 활용!)
+        binding.btnCopy.setOnClickListener {
+            val textToCopy = binding.tvContent.text.toString()
+            ClipboardUtil.copyToClipboard(this, textToCopy)
+            Toast.makeText(this, "클립보드에 복사되었습니다!", Toast.LENGTH_SHORT).show()
         }
 
-        // 비추천 클릭 이벤트
-        btnDislike.setOnClickListener {
-            viewModel.onDislikeClicked(currentTemplateId)
-            Toast.makeText(this, "비추천했습니다 👎", Toast.LENGTH_SHORT).show()
+        // 5. 추천 버튼 클릭 이벤트
+        binding.btnLike.setOnClickListener {
+            viewModel.onLikeClick(templateId)
         }
     }
 }
