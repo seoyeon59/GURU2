@@ -1,10 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:padding="18dp"
     tools:context=".ui.editor.AddTemplateActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardEditor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="14dp"
+        app:cardBackgroundColor="@color/TP_White"
+        android:backgroundTint="@color/TP_White"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvEditorTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="템플릿 작성하기"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/TP_TextPrimary"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="14dp"
+                android:background="@color/TP_Divider"
+                app:layout_constraintTop_toBottomOf="@id/tvEditorTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/labelTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="제목"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/TP_TextPrimary"
+                app:layout_constraintTop_toBottomOf="@id/divider1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <EditText
+                android:id="@+id/etTemplateTitle"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="템플릿 제목을 입력하세요"
+                android:background="@drawable/bg_input"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="@color/TP_TextPrimary"
+                android:textColorHint="#A3B0CC"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/labelTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/labelSituation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="상황"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/TP_TextPrimary"
+                app:layout_constraintTop_toBottomOf="@id/etTemplateTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <Spinner
+                android:id="@+id/spinnerSituation"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_input"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintTop_toBottomOf="@id/labelSituation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/labelTarget"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="상대"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/TP_TextPrimary"
+                app:layout_constraintTop_toBottomOf="@id/spinnerSituation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <Spinner
+                android:id="@+id/spinnerTarget"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_input"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintTop_toBottomOf="@id/labelTarget"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/labelContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="내용"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/TP_TextPrimary"
+                app:layout_constraintTop_toBottomOf="@id/spinnerTarget"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_of="parent"/>
+
+            <EditText
+                android:id="@+id/etTemplateContent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:hint="템플릿 내용을 입력하세요"
+                android:background="@drawable/bg_input"
+                android:padding="16dp"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:textColor="@color/TP_TextPrimary"
+                android:textColorHint="#A3B0CC"
+                android:textSize="15sp"
+                android:scrollbars="vertical"
+                app:layout_constraintTop_toBottomOf="@id/labelContent"
+                app:layout_constraintBottom_toTopOf="@id/btnSaveTemplate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <Button
+                android:id="@+id/btnSaveTemplate"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:text="💾 저장하기"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/TP_White"
+                android:background="@drawable/bg_button_blue"
+                android:stateListAnimator="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
