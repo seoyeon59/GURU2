@@ -1,6 +1,6 @@
 plugins {
-    alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android) 
     id("kotlin-kapt") // Room
 }
 
@@ -59,4 +59,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.android.material:material:1.12.0")
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
 }

@@ -32,4 +32,8 @@ class TemplateRepository(private val templateDao: TemplateDao) {
 
     // 비추천 로직
     suspend fun updateDislike(id: Int) = templateDao.updateDislikeCount(id)
+
+    fun getTemplatesByAuthor(authorId: String): Flow<List<Template>> {
+        return templateDao.getTemplatesByAuthor(authorId)
+    }
 }

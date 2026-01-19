@@ -52,4 +52,9 @@ interface TemplateDao {
     // 특정 템플릿 삭제 (필요한 경우에만 추가하세요)
     @Query("DELETE FROM templates WHERE `index` = :templateId")
     suspend fun deleteTemplate(templateId: Int)
+
+    // authorId 기준으로 내가 쓴 글 목록 가져오기
+    @Query("SELECT * FROM templates WHERE authorId = :authorId ORDER BY `index` DESC")
+    fun getTemplatesByAuthor(authorId: String): Flow<List<Template>>
+
 }
