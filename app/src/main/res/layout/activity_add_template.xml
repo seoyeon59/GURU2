@@ -1,27 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    activity_add_template.xml
-    템플릿 작성 화면 레이아웃
-
-    구조:
-     1. 그라데이션 배경 (bg_gradient)
-     2. 큰 흰색 카드 (MaterialCardView)
-     3. 카드 내부:
-        - 타이틀 "템플릿 작성하기"
-        - 제목 입력 (etTemplateTitle)
-        - 상황 선택 (spinnerSituation)
-        - 상대 선택 (spinnerTarget)
-        - 내용 입력 (etTemplateContent) - 여러 줄 가능
-        - 저장 버튼 (btnSaveTemplate)
-
-    디자인 특징:
-     - 수민님의 메인 화면 스타일과 통일
-     - 화이트/블루 테마
-     - 둥근 모서리 (28dp)
-     - 그림자 효과 (elevation 14dp)
-     - Spinner는 bg_input 배경 사용
-
--->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -32,7 +9,6 @@
     android:padding="18dp"
     tools:context=".ui.editor.AddTemplateActivity">
 
-    <!-- 전체를 감싸는 흰색 카드 (수민님 스타일 따름) -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardEditor"
         android:layout_width="0dp"
@@ -51,7 +27,6 @@
             android:layout_height="match_parent"
             android:padding="20dp">
 
-            <!-- 화면 타이틀 -->
             <TextView
                 android:id="@+id/tvEditorTitle"
                 android:layout_width="wrap_content"
@@ -64,7 +39,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- 타이틀 아래 구분선 -->
             <View
                 android:id="@+id/divider1"
                 android:layout_width="0dp"
@@ -75,7 +49,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- "제목" 레이블 -->
             <TextView
                 android:id="@+id/labelTitle"
                 android:layout_width="0dp"
@@ -89,7 +62,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- 제목 입력칸 (서연님의 Template.title) -->
             <EditText
                 android:id="@+id/etTemplateTitle"
                 android:layout_width="0dp"
@@ -109,7 +81,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- "상황" 레이블 -->
             <TextView
                 android:id="@+id/labelSituation"
                 android:layout_width="0dp"
@@ -123,8 +94,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- 상황 선택 Spinner (서연님의 Template.situation) -->
-            <!-- AddTemplateActivity에서 항목 설정됨 -->
             <Spinner
                 android:id="@+id/spinnerSituation"
                 android:layout_width="0dp"
@@ -138,7 +107,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- "상대" 레이블 -->
             <TextView
                 android:id="@+id/labelTarget"
                 android:layout_width="0dp"
@@ -152,8 +120,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- 상대 선택 Spinner (서연님의 Template.target) -->
-            <!-- AddTemplateActivity에서 항목 설정됨 -->
             <Spinner
                 android:id="@+id/spinnerTarget"
                 android:layout_width="0dp"
@@ -167,7 +133,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- "내용" 레이블 -->
             <TextView
                 android:id="@+id/labelContent"
                 android:layout_width="0dp"
@@ -179,17 +144,15 @@
                 android:textColor="@color/TP_TextPrimary"
                 app:layout_constraintTop_toBottomOf="@id/spinnerTarget"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_of="parent"/>
 
-            <!-- 내용 입력칸 (여러 줄 가능) -->
-            <!-- 서연님의 Template.content -->
             <EditText
                 android:id="@+id/etTemplateContent"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
-                android:hint="템플릿 내용을 입력하세요&#10;&#10;예시:&#10;안녕하세요, OOO입니다.&#10;..."
+                android:hint="템플릿 내용을 입력하세요"
                 android:background="@drawable/bg_input"
                 android:padding="16dp"
                 android:gravity="top|start"
@@ -203,7 +166,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- 클릭 시 EditorViewModel.saveTemplate() 호출 -->
             <Button
                 android:id="@+id/btnSaveTemplate"
                 android:layout_width="0dp"
