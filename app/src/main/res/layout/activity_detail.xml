@@ -1,25 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    activity_detail.xml
-    템플릿 상세 화면 레이아웃
-
-    구조:
-     1. 그라데이션 배경 (bg_gradient)
-     2. 큰 흰색 카드 (MaterialCardView)
-     3. 카드 내부:
-        - 제목 (tvDetailTitle)
-        - 구분선
-        - 상황/상대 태그 (tvDetailSituation, tvDetailTarget)
-        - 스크롤 가능한 내용 (tvDetailContent)
-        - 복사 버튼 (btnCopy)
-        - 추천/비추천 영역 (btnLike, btnDislike, tvLikeCount, tvDislikeCount)
-
-    디자인 특징:
-     - 수민님의 메인 화면 스타일과 통일
-     - 화이트/블루 테마
-     - 둥근 모서리 (28dp)
-     - 그림자 효과 (elevation 14dp)
--->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -30,7 +9,6 @@
     android:padding="18dp"
     tools:context=".ui.detail.DetailActivity">
 
-    <!-- 전체를 감싸는 흰색 카드 (수민님 스타일 따름) -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardDetail"
         android:layout_width="0dp"
@@ -49,7 +27,6 @@
             android:layout_height="match_parent"
             android:padding="20dp">
 
-            <!-- 템플릿 제목 (서연님의 Template.title) -->
             <TextView
                 android:id="@+id/tvDetailTitle"
                 android:layout_width="0dp"
@@ -64,7 +41,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- 제목 아래 구분선 -->
             <View
                 android:id="@+id/divider1"
                 android:layout_width="0dp"
@@ -75,7 +51,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- 상황/상대 태그 영역 -->
             <LinearLayout
                 android:id="@+id/tagArea"
                 android:layout_width="0dp"
@@ -86,7 +61,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
-                <!-- 상황 태그 (서연님의 Template.situation) -->
                 <TextView
                     android:id="@+id/tvDetailSituation"
                     android:layout_width="wrap_content"
@@ -101,7 +75,6 @@
                     android:paddingBottom="6dp"
                     android:layout_marginRight="8dp"/>
 
-                <!-- 상대 태그 (서연님의 Template.target) -->
                 <TextView
                     android:id="@+id/tvDetailTarget"
                     android:layout_width="wrap_content"
@@ -116,8 +89,6 @@
                     android:paddingBottom="6dp"/>
             </LinearLayout>
 
-            <!-- 템플릿 내용 (스크롤 가능) -->
-            <!-- 서연님의 Template.content -->
             <ScrollView
                 android:id="@+id/scrollContent"
                 android:layout_width="0dp"
@@ -142,8 +113,6 @@
                     android:background="@drawable/bg_input"/>
             </ScrollView>
 
-            <!-- 복사 버튼 (민경 담당) -->
-            <!-- 클릭 시 ClipboardUtil.copyToClipboard() 호출 -->
             <Button
                 android:id="@+id/btnCopy"
                 android:layout_width="0dp"
@@ -158,7 +127,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- 추천/비추천 영역 (민경 담당) -->
             <LinearLayout
                 android:id="@+id/likeArea"
                 android:layout_width="0dp"
@@ -170,8 +138,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
-                <!-- 추천 버튼 -->
-                <!-- 클릭 시 ViewModel.onLikeClicked() 호출 -->
                 <Button
                     android:id="@+id/btnLike"
                     android:layout_width="0dp"
@@ -184,7 +150,6 @@
                     android:textColor="@color/TP_TextPrimary"
                     android:stateListAnimator="@null"/>
 
-                <!-- 추천 수 표시 (서연님의 Template.likeCount) -->
                 <TextView
                     android:id="@+id/tvLikeCount"
                     android:layout_width="wrap_content"
@@ -197,8 +162,6 @@
                     android:minWidth="30dp"
                     android:gravity="center"/>
 
-                <!-- 비추천 버튼 -->
-                <!-- 클릭 시 ViewModel.onDislikeClicked() 호출 -->
                 <Button
                     android:id="@+id/btnDislike"
                     android:layout_width="0dp"
@@ -211,7 +174,6 @@
                     android:textColor="@color/TP_TextPrimary"
                     android:stateListAnimator="@null"/>
 
-                <!-- 비추천 수 표시 (서연님의 Template.dislikeCount) -->
                 <TextView
                     android:id="@+id/tvDislikeCount"
                     android:layout_width="wrap_content"
