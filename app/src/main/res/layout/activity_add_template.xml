@@ -1,43 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
+<!--
+    activity_add_template.xml
+    템플릿 작성 화면 레이아웃
+
+    구조:
+     1. 그라데이션 배경 (bg_gradient)
+     2. 큰 흰색 카드 (MaterialCardView)
+     3. 카드 내부:
+        - 타이틀 "템플릿 작성하기"
+        - 제목 입력 (etTemplateTitle)
+        - 상황 선택 (spinnerSituation)
+        - 상대 선택 (spinnerTarget)
+        - 내용 입력 (etTemplateContent) - 여러 줄 가능
+        - 저장 버튼 (btnSaveTemplate)
+
+    디자인 특징:
+     - 수민님의 메인 화면 스타일과 통일
+     - 화이트/블루 테마
+     - 둥근 모서리 (28dp)
+     - 그림자 효과 (elevation 14dp)
+     - Spinner는 bg_input 배경 사용
+
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:background="@drawable/bg_gradient"
+    android:padding="18dp"
+    tools:context=".ui.editor.AddTemplateActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="새로운 템플릿 추가"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp" />
-
-    <EditText
-        android:id="@+id/et_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="제목을 입력하세요"
-        android:padding="12dp"
-        android:layout_marginBottom="16dp"
-        android:background="@android:drawable/editbox_background"/>
-
-    <EditText
-        android:id="@+id/et_content"
-        android:layout_width="match_parent"
+    <!-- 전체를 감싸는 흰색 카드 (수민님 스타일 따름) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardEditor"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:hint="나만의 톤앤매너 내용을 적어보세요."
-        android:gravity="top"
-        android:padding="12dp"
-        android:background="@android:drawable/editbox_background"/>
+        app:cardCornerRadius="28dp"
+        app:cardElevation="14dp"
+        app:cardBackgroundColor="@color/TP_White"
+        android:backgroundTint="@color/TP_White"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="저장하기"
-        android:layout_marginTop="16dp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
 
-</LinearLayout>
+            <!-- 화면 타이틀 -->
+            <TextView
+                android:id="@+id/tvEditorTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="템플릿 작성하기"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/TP_TextPrimary"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- 타이틀 아래 구분선 -->
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="14dp"
+                android:background="@color/TP_Divider"
+                app:layout_constraintTop_toBottomOf="@id/tvEditorTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- "제목" 레이블 -->
+            <TextView
+                android:id="@+id/labelTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="제목"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/TP_TextPrimary"
+                app:layout_constraintTop_toBottomOf="@id/divider1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- 제목 입력칸 (서연님의 Template.title) -->
+            <EditText
+                android:id="@+id/etTemplateTitle"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:hint="템플릿 제목을 입력하세요"
+                android:background="@drawable/bg_input"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="@color/TP_TextPrimary"
+                android:textColorHint="#A3B0CC"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/labelTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- "상황" 레이블 -->
+            <TextView
+                android:id="@+id/labelSituation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="상황"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/TP_TextPrimary"
+                app:layout_constraintTop_toBottomOf="@id/etTemplateTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- 상황 선택 Spinner (서연님의 Template.situation) -->
+            <!-- AddTemplateActivity에서 항목 설정됨 -->
+            <Spinner
+                android:id="@+id/spinnerSituation"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_input"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintTop_toBottomOf="@id/labelSituation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- "상대" 레이블 -->
+            <TextView
+                android:id="@+id/labelTarget"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="상대"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/TP_TextPrimary"
+                app:layout_constraintTop_toBottomOf="@id/spinnerSituation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- 상대 선택 Spinner (서연님의 Template.target) -->
+            <!-- AddTemplateActivity에서 항목 설정됨 -->
+            <Spinner
+                android:id="@+id/spinnerTarget"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_input"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintTop_toBottomOf="@id/labelTarget"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- "내용" 레이블 -->
+            <TextView
+                android:id="@+id/labelContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="내용"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/TP_TextPrimary"
+                app:layout_constraintTop_toBottomOf="@id/spinnerTarget"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- 내용 입력칸 (여러 줄 가능) -->
+            <!-- 서연님의 Template.content -->
+            <EditText
+                android:id="@+id/etTemplateContent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:hint="템플릿 내용을 입력하세요&#10;&#10;예시:&#10;안녕하세요, OOO입니다.&#10;..."
+                android:background="@drawable/bg_input"
+                android:padding="16dp"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:textColor="@color/TP_TextPrimary"
+                android:textColorHint="#A3B0CC"
+                android:textSize="15sp"
+                android:scrollbars="vertical"
+                app:layout_constraintTop_toBottomOf="@id/labelContent"
+                app:layout_constraintBottom_toTopOf="@id/btnSaveTemplate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- 클릭 시 EditorViewModel.saveTemplate() 호출 -->
+            <Button
+                android:id="@+id/btnSaveTemplate"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:text="💾 저장하기"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/TP_White"
+                android:background="@drawable/bg_button_blue"
+                android:stateListAnimator="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

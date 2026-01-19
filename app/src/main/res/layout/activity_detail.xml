@@ -1,58 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
+<!--
+    activity_detail.xml
+    템플릿 상세 화면 레이아웃
+
+    구조:
+     1. 그라데이션 배경 (bg_gradient)
+     2. 큰 흰색 카드 (MaterialCardView)
+     3. 카드 내부:
+        - 제목 (tvDetailTitle)
+        - 구분선
+        - 상황/상대 태그 (tvDetailSituation, tvDetailTarget)
+        - 스크롤 가능한 내용 (tvDetailContent)
+        - 복사 버튼 (btnCopy)
+        - 추천/비추천 영역 (btnLike, btnDislike, tvLikeCount, tvDislikeCount)
+
+    디자인 특징:
+     - 수민님의 메인 화면 스타일과 통일
+     - 화이트/블루 테마
+     - 둥근 모서리 (28dp)
+     - 그림자 효과 (elevation 14dp)
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:background="@drawable/bg_gradient"
+    android:padding="18dp"
+    tools:context=".ui.detail.DetailActivity">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="템플릿 제목이 나옵니다"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp" />
-
-    <TextView
-        android:id="@+id/tv_content"
-        android:layout_width="match_parent"
+    <!-- 전체를 감싸는 흰색 카드 (수민님 스타일 따름) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardDetail"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#F5F5F5"
-        android:padding="16dp"
-        android:text="상세 내용이 여기에 들어갑니다."
-        android:textSize="18sp" />
+        app:cardCornerRadius="28dp"
+        app:cardElevation="14dp"
+        app:cardBackgroundColor="@color/TP_White"
+        android:backgroundTint="@color/TP_White"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="16dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
 
-        <ImageButton
-            android:id="@+id/btn_copy"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_copy"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:layout_marginEnd="20dp" />
+            <!-- 템플릿 제목 (서연님의 Template.title) -->
+            <TextView
+                android:id="@+id/tvDetailTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="템플릿 제목"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/TP_TextPrimary"
+                android:maxLines="2"
+                android:ellipsize="end"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-        <ImageButton
-            android:id="@+id/btn_like"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_thumb_up"
-            android:background="?attr/selectableItemBackgroundBorderless" />
+            <!-- 제목 아래 구분선 -->
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/TP_Divider"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-        <TextView
-            android:id="@+id/tv_like_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:layout_marginStart="8dp" />
+            <!-- 상황/상대 태그 영역 -->
+            <LinearLayout
+                android:id="@+id/tagArea"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/divider1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-    </LinearLayout>
-</LinearLayout>
+                <!-- 상황 태그 (서연님의 Template.situation) -->
+                <TextView
+                    android:id="@+id/tvDetailSituation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="상황: 출근"
+                    android:textSize="13sp"
+                    android:textColor="@color/TP_Blue"
+                    android:background="@drawable/bg_input"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:layout_marginRight="8dp"/>
+
+                <!-- 상대 태그 (서연님의 Template.target) -->
+                <TextView
+                    android:id="@+id/tvDetailTarget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="상대: 상사"
+                    android:textSize="13sp"
+                    android:textColor="@color/TP_Blue"
+                    android:background="@drawable/bg_input"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"/>
+            </LinearLayout>
+
+            <!-- 템플릿 내용 (스크롤 가능) -->
+            <!-- 서연님의 Template.content -->
+            <ScrollView
+                android:id="@+id/scrollContent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:fillViewport="true"
+                app:layout_constraintTop_toBottomOf="@id/tagArea"
+                app:layout_constraintBottom_toTopOf="@id/btnCopy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/tvDetailContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="템플릿 내용이 여기에 표시됩니다.\n\n여러 줄로 표시될 수 있습니다."
+                    android:textSize="15sp"
+                    android:textColor="@color/TP_TextPrimary"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="12dp"
+                    android:background="@drawable/bg_input"/>
+            </ScrollView>
+
+            <!-- 복사 버튼 (민경 담당) -->
+            <!-- 클릭 시 ClipboardUtil.copyToClipboard() 호출 -->
+            <Button
+                android:id="@+id/btnCopy"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="📋 복사하기"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/TP_White"
+                android:background="@drawable/bg_button_blue"
+                android:stateListAnimator="@null"
+                app:layout_constraintBottom_toTopOf="@id/likeArea"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- 추천/비추천 영역 (민경 담당) -->
+            <LinearLayout
+                android:id="@+id/likeArea"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <!-- 추천 버튼 -->
+                <!-- 클릭 시 ViewModel.onLikeClicked() 호출 -->
+                <Button
+                    android:id="@+id/btnLike"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="6dp"
+                    android:text="👍"
+                    android:textSize="20sp"
+                    android:background="@drawable/bg_input"
+                    android:textColor="@color/TP_TextPrimary"
+                    android:stateListAnimator="@null"/>
+
+                <!-- 추천 수 표시 (서연님의 Template.likeCount) -->
+                <TextView
+                    android:id="@+id/tvLikeCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/TP_TextPrimary"
+                    android:layout_marginRight="16dp"
+                    android:minWidth="30dp"
+                    android:gravity="center"/>
+
+                <!-- 비추천 버튼 -->
+                <!-- 클릭 시 ViewModel.onDislikeClicked() 호출 -->
+                <Button
+                    android:id="@+id/btnDislike"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="6dp"
+                    android:text="👎"
+                    android:textSize="20sp"
+                    android:background="@drawable/bg_input"
+                    android:textColor="@color/TP_TextPrimary"
+                    android:stateListAnimator="@null"/>
+
+                <!-- 비추천 수 표시 (서연님의 Template.dislikeCount) -->
+                <TextView
+                    android:id="@+id/tvDislikeCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/TP_TextPrimary"
+                    android:minWidth="30dp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
