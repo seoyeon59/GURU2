@@ -1,4 +1,5 @@
 package com.example.tonepack.navigation
 
-class IntentKeys {
+object IntentKeys {
+    const val TEMPLATE_ID = "TEMPLATE_ID"
 }
