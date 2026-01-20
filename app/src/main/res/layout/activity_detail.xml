@@ -1,10 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:padding="18dp"
     tools:context=".ui.detail.DetailActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardDetail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="14dp"
+        app:cardBackgroundColor="@color/TP_White"
+        android:backgroundTint="@color/TP_White"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvDetailTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="템플릿 제목"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/TP_TextPrimary"
+                android:maxLines="2"
+                android:ellipsize="end"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/TP_Divider"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/tagArea"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/divider1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/tvDetailSituation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="상황: 출근"
+                    android:textSize="13sp"
+                    android:textColor="@color/TP_Blue"
+                    android:background="@drawable/bg_input"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:layout_marginRight="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvDetailTarget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="상대: 상사"
+                    android:textSize="13sp"
+                    android:textColor="@color/TP_Blue"
+                    android:background="@drawable/bg_input"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"/>
+            </LinearLayout>
+
+            <ScrollView
+                android:id="@+id/scrollContent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:fillViewport="true"
+                app:layout_constraintTop_toBottomOf="@id/tagArea"
+                app:layout_constraintBottom_toTopOf="@id/btnCopy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/tvDetailContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="템플릿 내용이 여기에 표시됩니다.\n\n여러 줄로 표시될 수 있습니다."
+                    android:textSize="15sp"
+                    android:textColor="@color/TP_TextPrimary"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="12dp"
+                    android:background="@drawable/bg_input"/>
+            </ScrollView>
+
+            <Button
+                android:id="@+id/btnCopy"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="📋 복사하기"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/TP_White"
+                android:background="@drawable/bg_button_blue"
+                android:stateListAnimator="@null"
+                app:layout_constraintBottom_toTopOf="@id/likeArea"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/likeArea"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <Button
+                    android:id="@+id/btnLike"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="6dp"
+                    android:text="👍"
+                    android:textSize="20sp"
+                    android:background="@drawable/bg_input"
+                    android:textColor="@color/TP_TextPrimary"
+                    android:stateListAnimator="@null"/>
+
+                <TextView
+                    android:id="@+id/tvLikeCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/TP_TextPrimary"
+                    android:layout_marginRight="16dp"
+                    android:minWidth="30dp"
+                    android:gravity="center"/>
+
+                <Button
+                    android:id="@+id/btnDislike"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="6dp"
+                    android:text="👎"
+                    android:textSize="20sp"
+                    android:background="@drawable/bg_input"
+                    android:textColor="@color/TP_TextPrimary"
+                    android:stateListAnimator="@null"/>
+
+                <TextView
+                    android:id="@+id/tvDislikeCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/TP_TextPrimary"
+                    android:minWidth="30dp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
