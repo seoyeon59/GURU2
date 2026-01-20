@@ -1,10 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.community.CommunityActivity">
+    android:background="@drawable/bg_gradient">
+
+    <!-- 제목 -->
+    <TextView
+        android:id="@+id/tvTopTitle"
+        android:layout_width="0dp"
+        android:layout_height="84dp"
+        android:gravity="center"
+        android:text="Community"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        android:background="@color/TP_Blue"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- 목록 배경 부분 -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardBoard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="22dp"
+        app:cardElevation="12dp"
+        app:cardBackgroundColor="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/tvTopTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- 번호, 제목, 작성자 -->
+            <LinearLayout
+                android:id="@+id/headerRow"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:background="@color/TP_Blue"
+                android:gravity="center_vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="번호"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/white"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="22dp"
+                    android:background="#33FFFFFF"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="12dp"
+                    android:text="제목"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/white"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="22dp"
+                    android:background="#33FFFFFF"/>
+
+                <TextView
+                    android:layout_width="88dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="작성자"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
+
+            <!-- 목록 -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCommunity"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:clipToPadding="false"
+                android:paddingBottom="8dp"
+                app:layout_constraintTop_toBottomOf="@id/headerRow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -68,11 +68,11 @@
                 android:id="@+id/etNickname"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="@string/nickname"
                 android:background="@drawable/bg_input"
+                android:hint="아이디"
+                android:inputType="textPersonName"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:inputType="textPersonName"
                 android:textColor="@color/TP_TextPrimary"
                 android:textColorHint="#A3B0CC" />
 
@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="12dp"
-                android:hint="@string/user_id"
+                android:hint="비밀번호"
                 android:background="@drawable/bg_input"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"

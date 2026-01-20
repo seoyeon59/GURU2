@@ -8,7 +8,7 @@
     android:paddingTop="18dp"
     android:paddingBottom="18dp">
 
-    <!-- 큰 흰 카드 (예시처럼 화면을 다 덮지 않게 좌우 여백) -->
+    <!-- 직사각형의 큰 배경 생성 color:하얀색 -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardMain"
         android:layout_width="0dp"
@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:padding="18dp">
 
-            <!-- 상단 타이틀 -->
+            <!-- 상단 타이틀 : Tone Pack -->
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- 설정 아이콘 (원형 배경 + 살짝 그림자 느낌) -->
+            <!-- 설정 아이콘 파일명 : ic_setttings -->
             <FrameLayout
                 android:id="@+id/btnSettings"
                 android:layout_width="40dp"
@@ -59,7 +59,7 @@
                     android:contentDescription="settings"/>
             </FrameLayout>
 
-            <!-- 얇은 구분선 -->
+            <!-- 타이틀과 목록 사이 구분선 -->
             <View
                 android:id="@+id/divider"
                 android:layout_width="0dp"
@@ -96,7 +96,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <!-- 기능 카드 3개를 쌓기 -->
+            <!-- 기능 목록 3개를 쌓기 -->
             <LinearLayout
                 android:id="@+id/listArea"
                 android:layout_width="0dp"
@@ -107,7 +107,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
-                <!-- 카드 1 -->
+                <!-- 목록 1_템플릿작성하기 -->
                 <LinearLayout
                     android:id="@+id/actionWrite"
                     android:layout_width="match_parent"
@@ -163,7 +163,7 @@
                         android:contentDescription="go"/>
                 </LinearLayout>
 
-                <!-- 카드 2 -->
+                <!-- 목록2_커뮤니티 둘러보기-->
                 <LinearLayout
                     android:id="@+id/actionCommunity"
                     android:layout_width="match_parent"
@@ -219,7 +219,7 @@
                         android:contentDescription="go"/>
                 </LinearLayout>
 
-                <!-- 카드 3 -->
+                <!-- 목록3_마이페이지 들어가기 -->
                 <LinearLayout
                     android:id="@+id/actionMyPage"
                     android:layout_width="match_parent"
