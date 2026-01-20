@@ -36,6 +36,9 @@ class AddTemplateActivity : AppCompatActivity() {
             val situation = spinnerSituation.selectedItem.toString()
             val target = spinnerTarget.selectedItem.toString()
 
+            // [추가] 로그를 찍어서 한글이 제대로 찍히는지 확인
+            android.util.Log.d("AddTemplate", "입력 데이터: $title, $content")
+
             viewModel.saveTemplate(title, content, situation, target)
         }
     }
