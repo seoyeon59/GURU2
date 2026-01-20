@@ -144,7 +144,7 @@
                 android:textColor="@color/TP_TextPrimary"
                 app:layout_constraintTop_toBottomOf="@id/spinnerTarget"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_of="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"/>
 
             <EditText
                 android:id="@+id/etTemplateContent"

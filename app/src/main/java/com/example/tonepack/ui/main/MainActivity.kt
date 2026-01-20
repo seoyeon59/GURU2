@@ -1,10 +1,14 @@
-package com.example.tonepack
+package com.example.tonepack.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.tonepack.R
+import com.example.tonepack.ui.community.CommunityActivity
+import com.example.tonepack.ui.editor.AddTemplateActivity // 템플릿 작성 화면
+import com.example.tonepack.ui.mypage.MyPageActivity
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,35 +16,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // 1) 첫 카드: 템플릿 작성
-        setCard(
-            rootId = R.id.cardWrite,
-            icon = R.drawable.ic_pencil,
-            title = getString(R.string.write_template),
-            desc = getString(R.string.write_template_desc)
-        )
+        // 1. 템플릿 작성하기 클릭 시 이동
+        findViewById<View>(R.id.actionWrite).setOnClickListener {
+            val intent = Intent(this, AddTemplateActivity::class.java)
+            startActivity(intent)
+        }
 
-        // 2) 두번째 카드: 커뮤니티
-        setCard(
-            rootId = R.id.cardCommunity,
-            icon = R.drawable.ic_chat,
-            title = getString(R.string.browse_community),
-            desc = getString(R.string.browse_community_desc)
-        )
+        // 2. 커뮤니티 둘러보기 클릭 시 이동
+        findViewById<View>(R.id.actionCommunity).setOnClickListener {
+             val intent = Intent(this, CommunityActivity::class.java)
+             startActivity(intent)
+        }
 
-        // 3) 세번째 카드: 마이페이지
-        setCard(
-            rootId = R.id.cardMypage,
-            icon = R.drawable.ic_user,
-            title = getString(R.string.go_mypage),
-            desc = getString(R.string.go_mypage_desc)
-        )
-    }
-
-    private fun setCard(rootId: Int, icon: Int, title: String, desc: String) {
-        val root = findViewById<View>(rootId)
-        root.findViewById<ImageView>(R.id.ivIcon).setImageResource(icon)
-        root.findViewById<TextView>(R.id.tvTitle).text = title
-        root.findViewById<TextView>(R.id.tvDesc).text = desc
+        // 3. 마이페이지 들어가기 클릭 시 이동
+        findViewById<View>(R.id.actionMyPage).setOnClickListener {
+             val intent = Intent(this, MyPageActivity::class.java)
+             startActivity(intent)
+        }
     }
 }
