@@ -1,4 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="28dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
 
-</selector>
+
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineJoin="miter"
+        android:strokeLineCap="square"
+        android:pathData="M4,4 H16 V16 H4 Z"/>
+
+
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineJoin="miter"
+        android:strokeLineCap="square"
+        android:pathData="M8,8 H20 V20 H8 Z"/>
+</vector>
