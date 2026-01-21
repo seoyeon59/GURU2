@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tonepack.R
 import com.example.tonepack.data.local.entity.Template
 import com.example.tonepack.ui.detail.DetailActivity
+import com.example.tonepack.navigation.IntentKeys
 
 class CommunityAdapter(private val items: List<Template>) :
     RecyclerView.Adapter<CommunityAdapter.ViewHolder>() {
@@ -39,8 +40,8 @@ class CommunityAdapter(private val items: List<Template>) :
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, DetailActivity::class.java).apply {
-                // 클릭한 글의 index 번호를 "TEMPLATE_INDEX"라는 이름으로 담아서 보냄
-                putExtra("TEMPLATE_INDEX", item.index)
+                // MyPage와 동일한 키로 통일
+                putExtra(IntentKeys.TEMPLATE_ID, item.index)
             }
             context.startActivity(intent)
         }
