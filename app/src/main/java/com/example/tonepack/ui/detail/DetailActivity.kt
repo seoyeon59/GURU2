@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.tonepack.App
 import com.example.tonepack.R
 import com.example.tonepack.util.ClipboardUtil
+import com.example.tonepack.navigation.IntentKeys
+
 
 class DetailActivity : AppCompatActivity() {
 
@@ -36,8 +38,8 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        // 전달받은 ID 읽기
-        currentTemplateId = intent.getIntExtra("TEMPLATE_INDEX", -1)
+        // 전달받은 ID 읽기 (MyPageActivity와 키 통일)
+        currentTemplateId = intent.getIntExtra(IntentKeys.TEMPLATE_ID, -1)
 
         if (currentTemplateId == -1) {
             Toast.makeText(this, "데이터를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
