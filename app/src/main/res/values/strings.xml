@@ -19,4 +19,24 @@
 
     <string name="go_mypage">마이페이지 들어가기</string>
     <string name="go_mypage_desc">내 정보 관리 및 설정을 확인하세요.</string>
+
+    <!-- 카테고리 목록-->
+    <string-array name="situation_categories">
+        <item>선택하세요(기본값)</item>
+        <item>출근/인사</item>
+        <item>업무 보고</item>
+        <item>요청/문의</item>
+        <item>거절/사과</item>
+        <item>경조사/휴가</item>
+        <item>일상/기타</item>
+    </string-array>
+
+    <string-array name="target_categories">
+        <item>선택하세요(기본값)</item>
+        <item>상사/선배</item>
+        <item>동료/동기</item>
+        <item>후배/신입</item>
+        <item>협력사/업체</item>
+        <item>교수/교직원/공적관계</item>
+    </string-array>
 </resources>

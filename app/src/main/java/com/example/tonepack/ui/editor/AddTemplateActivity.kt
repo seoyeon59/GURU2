@@ -36,7 +36,7 @@ class AddTemplateActivity : AppCompatActivity() {
             val situation = spinnerSituation.selectedItem.toString()
             val target = spinnerTarget.selectedItem.toString()
 
-            // [추가] 로그를 찍어서 한글이 제대로 찍히는지 확인
+            // 로그를 찍어서 한글이 제대로 찍히는지 확인
             android.util.Log.d("AddTemplate", "입력 데이터: $title, $content")
 
             viewModel.saveTemplate(title, content, situation, target)
@@ -51,17 +51,27 @@ class AddTemplateActivity : AppCompatActivity() {
         btnSave = findViewById(R.id.btnSaveTemplate)
     }
 
-    // Spinner 데이터 세팅 (상황, 상대 카테고리)
+    // Spinner 데이터 세팅 (상황, 상대 카테고리) - string.xml의 array 참고
     private fun setupSpinners() {
-        val situations = arrayOf("선택하세요", "출근", "업무", "퇴사", "실수보고", "감사, 인사", "문의")
-        val situationAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, situations)
-        situationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerSituation.adapter = situationAdapter
+        // 상황 스피너: strings.xml의 situation_categories 사용
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.situation_categories,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerSituation.adapter = adapter
+        }
 
-        val targets = arrayOf("선택하세요", "상사", "동료", "동기", "업체", "후배", "박사님, 교수님", "학생회장", "학과")
-        val targetAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, targets)
-        targetAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerTarget.adapter = targetAdapter
+        // 상대 스피너: strings.xml의 target_categories 사용
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.target_categories,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerTarget.adapter = adapter
+        }
     }
 
     // 저장 결과에 따른 UI 처리 (성공 시 화면 종료)

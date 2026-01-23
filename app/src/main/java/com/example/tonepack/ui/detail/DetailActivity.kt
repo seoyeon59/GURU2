@@ -1,7 +1,7 @@
 package com.example.tonepack.ui.detail
 
 import android.os.Bundle
-import android.widget.ImageButton // Button 대신 ImageButton 임포트
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -11,15 +11,15 @@ import com.example.tonepack.R
 import com.example.tonepack.util.ClipboardUtil
 import com.example.tonepack.navigation.IntentKeys
 
-
 class DetailActivity : AppCompatActivity() {
 
-    // ViewModel 초기화 (저장소 연결)
+    // ViewModel 초기화: Factory에 templateRepository와 sessionManager를 함께 전달합니다.
     private val viewModel: DetailViewModel by viewModels {
-        DetailViewModelFactory((application as App).templateRepository)
+        val app = application as App
+        DetailViewModelFactory(app.templateRepository, app.sessionManager)
     }
 
-    // UI 컴포넌트 변수 (XML 타입과 일치시킴)
+    // UI 컴포넌트 변수
     private lateinit var tvTitle: TextView
     private lateinit var tvContent: TextView
     private lateinit var tvSituation: TextView
@@ -27,7 +27,6 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var tvLikeCount: TextView
     private lateinit var tvDislikeCount: TextView
 
-    // XML이 ImageButton이므로 타입을 변경함
     private lateinit var btnCopy: ImageButton
     private lateinit var btnLike: ImageButton
     private lateinit var btnDislike: ImageButton
@@ -38,7 +37,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        // 전달받은 ID 읽기 (MyPageActivity와 키 통일)
+        // 전달받은 ID 읽기
         currentTemplateId = intent.getIntExtra(IntentKeys.TEMPLATE_ID, -1)
 
         if (currentTemplateId == -1) {
@@ -55,7 +54,6 @@ class DetailActivity : AppCompatActivity() {
         viewModel.loadTemplate(currentTemplateId)
     }
 
-    // findViewById 연결
     private fun initViews() {
         tvTitle = findViewById(R.id.tvDetailTitle)
         tvContent = findViewById(R.id.tvDetailContent)
@@ -64,22 +62,29 @@ class DetailActivity : AppCompatActivity() {
         tvLikeCount = findViewById(R.id.tvLikeCount)
         tvDislikeCount = findViewById(R.id.tvDislikeCount)
 
-        // 아이디 연결
         btnCopy = findViewById(R.id.btnCopy)
         btnLike = findViewById(R.id.btnLike)
         btnDislike = findViewById(R.id.btnDislike)
     }
 
-    // UI 갱신 로직
+    // UI 갱신 및 메시지 관찰
     private fun observeViewModel() {
+        // 템플릿 데이터 업데이트 관찰
         viewModel.template.observe(this) { template ->
             template?.let {
                 tvTitle.text = it.title
                 tvContent.text = it.content
                 tvSituation.text = "상황: ${it.situation}"
                 tvTarget.text = "상대: ${it.target}"
-                tvLikeCount.text = it.likeCount.toString() // 숫자만 표시 (XML 디자인 유지)
+                tvLikeCount.text = it.likeCount.toString()
                 tvDislikeCount.text = it.dislikeCount.toString()
+            }
+        }
+
+        // 추천/비추천 처리 결과 메시지 관찰 (Toast 띄우기)
+        viewModel.toastMessage.observe(this) { message ->
+            if (!message.isNullOrEmpty()) {
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             }
         }
     }

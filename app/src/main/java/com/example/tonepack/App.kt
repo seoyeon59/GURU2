@@ -22,7 +22,9 @@ class App : Application() {
 
     // 레포지토리 인스턴스 (DAO를 주입받아 생성)
     val authRepository by lazy { AuthRepository(database.userDao()) }
-    val templateRepository by lazy { TemplateRepository(database.templateDao()) }
+    val templateRepository by lazy {
+        TemplateRepository(database.templateDao(), database.templateLikeDao())
+    }
 
     // 세션 매니저 (로그인 상태 및 유저 ID 저장용)
     val sessionManager by lazy { SessionManager(this) }

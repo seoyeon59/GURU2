@@ -7,19 +7,27 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.tonepack.data.local.dao.TemplateDao
 import com.example.tonepack.data.local.dao.UserDao
+import com.example.tonepack.data.local.dao.TemplateLikeDao
 import com.example.tonepack.data.local.entity.Template
 import com.example.tonepack.data.local.entity.User
+import com.example.tonepack.data.local.entity.TemplateLike
 import com.example.tonepack.data.seed.SeedData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 // User와 Template 테이블을 포함하는 Room 데이터베이스 설정
-@Database(entities = [User::class, Template::class], version = 1, exportSchema = false)
+@Database(
+    entities = [User::class, Template::class, TemplateLike::class],
+    version = 2, // seed data 수정 후 버전 업데이트
+    exportSchema = false
+)
+
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
     abstract fun templateDao(): TemplateDao
+    abstract fun templateLikeDao(): TemplateLikeDao
 
     companion object {
         @Volatile

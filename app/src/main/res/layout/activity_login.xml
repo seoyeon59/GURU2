@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-    </com.google.android.material.card.MaterialCardView>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@
 
 
         <EditText
-            android:id="@+id/etNickname"
+            android:id="@+id/etId"
             android:layout_width="323dp"
             android:layout_height="50dp"
             android:background="@null"
@@ -64,7 +64,7 @@
 
 
         <EditText
-            android:id="@+id/etUserId"
+            android:id="@+id/etPw"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="12dp"
@@ -96,5 +96,6 @@
 
 
     </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
