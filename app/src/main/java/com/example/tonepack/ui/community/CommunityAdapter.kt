@@ -19,10 +19,12 @@ class CommunityAdapter(private var items: List<Template>) :
         notifyDataSetChanged()
     }
 
-
+    // ViewHolder: item_community.xml의 뷰들을 연결합니다.
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvTitle: TextView = view.findViewById(R.id.tvTitle) //tvIndex 선언을 안한 상태이기에 삭제했습니다. 확인 필요합니다.(수민)
-        val tvAuthor: TextView = view.findViewById(R.id.tvAuthor)
+        // item_community.xml에서 설정한 새로운 ID들로 매칭합니다.
+        val tvIndex: TextView = view.findViewById(R.id.tvItemIndex)
+        val tvTitle: TextView = view.findViewById(R.id.tvItemTitle)
+        val tvAuthor: TextView = view.findViewById(R.id.tvItemAuthor)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,13 +35,21 @@ class CommunityAdapter(private var items: List<Template>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
+
+        // 번호 표시: 리스트의 순서(position + 1) 혹은 DB의 index를 사용합니다.
+        holder.tvIndex.text = (position + 1).toString()
+
+        // 제목 표시
         holder.tvTitle.text = item.title
-        holder.tvAuthor.text = item.authorId  // authorId가 nullable이면 ?: "익명" 추가
+
+        // 작성자 표시: null일 경우를 대비해 "익명" 처리를 추가했습니다.
+        holder.tvAuthor.text = item.authorId ?: "익명"
 
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, DetailActivity::class.java).apply {
-                putExtra(IntentKeys.TEMPLATE_ID, item.index) //id가 아닌 무조건 index해야지 오류 발생 안합니다!(수민)
+
+                putExtra(IntentKeys.TEMPLATE_ID, item.index)
             }
             context.startActivity(intent)
         }

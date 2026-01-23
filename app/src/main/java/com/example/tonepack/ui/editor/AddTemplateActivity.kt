@@ -51,27 +51,22 @@ class AddTemplateActivity : AppCompatActivity() {
         btnSave = findViewById(R.id.btnSaveTemplate)
     }
 
-    // Spinner 데이터 세팅 (상황, 상대 카테고리) - string.xml의 array 참고
+    // Spinner 데이터 세팅: 글씨 색상 화이트 적용을 위해 커스텀 레이아웃 연결
     private fun setupSpinners() {
-        // 상황 스피너: strings.xml의 situation_categories 사용
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.situation_categories,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinnerSituation.adapter = adapter
-        }
+        // 1. 상황 스피너 설정
+        val situationArray = resources.getStringArray(R.array.situation_categories)
+        val situationAdapter = ArrayAdapter(this, R.layout.spinner_item, situationArray)
 
-        // 상대 스피너: strings.xml의 target_categories 사용
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.target_categories,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinnerTarget.adapter = adapter
-        }
+        // 드롭다운 목록도 커스텀 레이아웃 사용
+        situationAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        spinnerSituation.adapter = situationAdapter
+
+        // 2. 상대 스피너 설정
+        val targetArray = resources.getStringArray(R.array.target_categories)
+        val targetAdapter = ArrayAdapter(this, R.layout.spinner_item, targetArray)
+
+        targetAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        spinnerTarget.adapter = targetAdapter
     }
 
     // 저장 결과에 따른 UI 처리 (성공 시 화면 종료)

@@ -3,28 +3,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="14dp">
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="?attr/selectableItemBackground"
+    android:paddingTop="14dp"
+    android:paddingBottom="14dp">
+
+    <!-- 인덱스 -->
+    <TextView
+        android:id="@+id/tvItemIndex"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="@font/cute"
+        android:textColor="@color/TP_TextSecondary"
+        android:textSize="14sp"
+        android:text="1" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent" />
 
     <!-- 글 제목 -->
     <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
+        android:id="@+id/tvItemTitle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textStyle="bold"
+        android:layout_weight="1"
+        android:paddingStart="16dp"
+        android:paddingEnd="12dp"
         android:fontFamily="@font/cute"
         android:textColor="@color/TP_TextPrimary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:ellipsize="end"
         android:maxLines="1"
-        android:ellipsize="end"/>
+        android:text="템플릿 제목" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent" />
 
     <!-- 작성자 -->
     <TextView
-        android:id="@+id/tvAuthor"
-        android:layout_width="match_parent"
+        android:id="@+id/tvItemAuthor"
+        android:layout_width="88dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textSize="12sp"
+        android:gravity="center"
         android:fontFamily="@font/cute"
-        android:textColor="@color/TP_Hint"/>
+        android:textColor="@color/TP_Gray200"
+        android:textSize="14sp"
+        android:text="작성자" />
 </LinearLayout>

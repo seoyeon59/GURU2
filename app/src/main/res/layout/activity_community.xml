@@ -21,6 +21,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- 카테고리 -->
+    <LinearLayout
+        android:id="@+id/filterLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTopTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Spinner
+            android:id="@+id/spinnerFilterSituation"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_input"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/spinnerFilterTarget"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg_input"
+            android:spinnerMode="dropdown" />
+    </LinearLayout>
+
     <!-- 목록 배경 부분 -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardBoard"
@@ -31,7 +61,7 @@
         app:cardElevation="12dp"
         app:cardBackgroundColor="@android:color/white"
         android:backgroundTint="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/tvTopTitle"
+        app:layout_constraintTop_toBottomOf="@id/filterLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -104,8 +134,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.google.android.material.card.MaterialCardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
