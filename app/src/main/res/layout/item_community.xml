@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 커뮤니티 목록 한 줄 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="16dp"
-    android:gravity="center_vertical">
+    android:orientation="vertical"
+    android:padding="14dp">
 
-    <TextView
-        android:id="@+id/tvIndex"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:text="1" />
-
+    <!-- 글 제목 -->
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:paddingStart="12dp"
+        android:textSize="15sp"
         android:textStyle="bold"
-        android:text="제목" />
+        android:fontFamily="@font/cute"
+        android:textColor="@color/TP_TextPrimary"
+        android:maxLines="1"
+        android:ellipsize="end"/>
 
+    <!-- 작성자 -->
     <TextView
         android:id="@+id/tvAuthor"
-        android:layout_width="80dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
-        android:text="작성자" />
+        android:layout_marginTop="4dp"
+        android:textSize="12sp"
+        android:fontFamily="@font/cute"
+        android:textColor="@color/TP_Hint"/>
 </LinearLayout>

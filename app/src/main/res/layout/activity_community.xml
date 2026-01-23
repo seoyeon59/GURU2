@@ -12,11 +12,11 @@
         android:layout_width="0dp"
         android:layout_height="84dp"
         android:gravity="center"
-        android:text="Community"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:textColor="@android:color/white"
+        android:fontFamily="@font/black_cat"
+        android:textColor="@color/TP_TextPrimary"
+        android:textSize="55sp"
         android:background="@color/TP_Blue"
+        android:text="Community"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -46,7 +46,7 @@
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:orientation="horizontal"
-                android:background="@color/TP_Blue"
+                android:background="@color/TP_TextSecondary"
                 android:gravity="center_vertical"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,8 +56,8 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:fontFamily="@font/cute"
                     android:text="번호"
-                    android:textStyle="bold"
                     android:textSize="16sp"
                     android:textColor="@android:color/white"/>
 
@@ -72,8 +72,8 @@
                     android:layout_weight="1"
                     android:paddingStart="16dp"
                     android:paddingEnd="12dp"
+                    android:fontFamily="@font/cute"
                     android:text="제목"
-                    android:textStyle="bold"
                     android:textSize="16sp"
                     android:textColor="@android:color/white"/>
 
@@ -86,13 +86,13 @@
                     android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:fontFamily="@font/cute"
                     android:text="작성자"
-                    android:textStyle="bold"
                     android:textSize="16sp"
                     android:textColor="@android:color/white"/>
             </LinearLayout>
 
-            <!-- 목록 -->
+            <!-- 커뮤니티 글 목록 -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCommunity"
                 android:layout_width="0dp"
@@ -103,6 +103,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>

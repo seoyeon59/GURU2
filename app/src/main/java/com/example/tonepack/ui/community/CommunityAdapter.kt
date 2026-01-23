@@ -11,42 +11,39 @@ import com.example.tonepack.data.local.entity.Template
 import com.example.tonepack.ui.detail.DetailActivity
 import com.example.tonepack.navigation.IntentKeys
 
-class CommunityAdapter(private val items: List<Template>) :
+class CommunityAdapter(private var items: List<Template>) :
     RecyclerView.Adapter<CommunityAdapter.ViewHolder>() {
 
-    // 레이아웃 내 View들을 전달받아 보관
+    fun submit(list: List<Template>) {
+        items = list
+        notifyDataSetChanged()
+    }
+
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvIndex: TextView = view.findViewById(R.id.tvIndex)
-        val tvTitle: TextView = view.findViewById(R.id.tvTitle)
+        val tvTitle: TextView = view.findViewById(R.id.tvTitle) //tvIndex 선언을 안한 상태이기에 삭제했습니다. 확인 필요합니다.(수민)
         val tvAuthor: TextView = view.findViewById(R.id.tvAuthor)
     }
 
-    // 아이템 레이아웃(XML) 생성
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_community, parent, false)
         return ViewHolder(view)
     }
 
-    // 데이터 연결 및 클릭 이벤트 처리
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
-
-        holder.tvIndex.text = (position + 1).toString()
         holder.tvTitle.text = item.title
-        holder.tvAuthor.text = item.authorId ?: "익명"
+        holder.tvAuthor.text = item.authorId  // authorId가 nullable이면 ?: "익명" 추가
 
-        // 리스트 항목 클릭 시 상세 화면(DetailActivity)으로 이동
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, DetailActivity::class.java).apply {
-                // MyPage와 동일한 키로 통일
-                putExtra(IntentKeys.TEMPLATE_ID, item.index)
+                putExtra(IntentKeys.TEMPLATE_ID, item.index) //id가 아닌 무조건 index해야지 오류 발생 안합니다!(수민)
             }
             context.startActivity(intent)
         }
     }
 
-    // 전체 아이템 개수 반환
     override fun getItemCount() = items.size
 }

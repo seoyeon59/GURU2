@@ -15,7 +15,7 @@
         android:layout_marginTop="104dp"
         android:fontFamily="@font/black_cat"
         android:text="Tone Pack"
-        android:textColor="#3E2723"
+        android:textColor="@color/TP_TextPrimary"
         android:textSize="65sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,14 +53,14 @@
             android:inputType="textPersonName"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:textColor="#4E342E"
-            android:textColorHint="#3E2723"
+            android:textColor="@color/TP_TextSecondary"
+            android:textColorHint="@color/TP_TextSecondary"
             android:textSize="16sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="#3E2723" />
+            android:background="@color/TP_TextSecondary" />
 
 
         <EditText
@@ -74,8 +74,8 @@
             android:inputType="textPassword"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:textColor="#4E342E"
-            android:textColorHint="#3E2723"
+            android:textColor="@color/TP_TextSecondary"
+            android:textColorHint="@color/TP_TextSecondary"
             android:textSize="16sp" />
 
         <View

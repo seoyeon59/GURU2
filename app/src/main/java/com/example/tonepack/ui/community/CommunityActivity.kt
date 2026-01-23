@@ -11,31 +11,23 @@ class CommunityActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCommunityBinding
 
-    // ViewModel 생성 (Factory를 통해 Repository 전달)
     private val viewModel: CommunityViewModel by viewModels {
         CommunityViewModelFactory((application as App).templateRepository)
     }
+
+    private val adapter = CommunityAdapter(emptyList())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCommunityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 1. RecyclerView 설정
-        setupRecyclerView()
+        binding.rvCommunity.layoutManager = LinearLayoutManager(this)
+        binding.rvCommunity.adapter = adapter
+        binding.rvCommunity.setHasFixedSize(true)
 
-        // 2. ViewModel 관찰 (데이터가 오면 리스트 갱신)
-        viewModel.allTemplates.observe(this) { templateList ->
-            templateList?.let {
-                binding.rvCommunity.adapter = CommunityAdapter(it)
-            }
-        }
-    }
-
-    private fun setupRecyclerView() {
-        binding.rvCommunity.apply {
-            layoutManager = LinearLayoutManager(this@CommunityActivity)
-            setHasFixedSize(true) // 성능 최적화
+        viewModel.allTemplates.observe(this) { list ->
+            adapter.submit(list) // 여기서 오류 발생하니까 수정하지 말아주세요!(수민)
         }
     }
 }
