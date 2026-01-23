@@ -31,6 +31,7 @@
                 android:id="@+id/tvDetailTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/cute"
                 android:text="템플릿 타이틀"
                 android:textStyle="bold"
                 android:textSize="20sp"
@@ -63,6 +64,7 @@
                     android:id="@+id/tvDetailSituation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/cute"
                     android:text="상황: 출근"
                     android:textColor="@color/TP_Blue"
                     android:background="@drawable/bg_input"
@@ -73,6 +75,7 @@
                     android:id="@+id/tvDetailTarget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/cute"
                     android:text="상대: 상사"
                     android:textColor="@color/TP_Blue"
                     android:background="@drawable/bg_input"
@@ -94,7 +97,9 @@
                     android:id="@+id/tvDetailContent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/cute"
                     android:text="템플릿 내용_커뮤니티"
+                    android:textColor="@color/TP_Blue"
                     android:background="@drawable/bg_input"
                     android:padding="12dp"/>
             </ScrollView>

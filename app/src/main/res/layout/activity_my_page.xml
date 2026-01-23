@@ -35,6 +35,7 @@
                 android:id="@+id/tvMyPageTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/cute"
                 android:text="마이페이지"
                 android:textStyle="bold"
                 android:textSize="20sp"
@@ -109,6 +110,7 @@
                         android:id="@+id/tvNickname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/cute"
                         android:text="닉네임"
                         android:textStyle="bold"
                         android:textSize="18sp"
@@ -119,6 +121,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
+                        android:fontFamily="@font/cute"
                         android:text="사용자 ID"
                         android:textSize="15sp"
                         android:textColor="@color/TP_TextSecondary"/>
