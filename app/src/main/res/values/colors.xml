@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="TP_Blue">#0047AB</color>
-    <color name="TP_Blue2">#2F6BFF</color>
+    <!-- TonePack Core -->
+    <color name="TP_Blue">#FFFFFF</color>
     <color name="TP_White">#FFFFFF</color>
+    <color name="TP_TextPrimary">#3E2723</color>
 
-    <color name="TP_TitleNavy">#15366F</color>
-    <color name="TP_TextPrimary">#1C2A4A</color>
-    <color name="TP_TextSecondary">#6B7A99</color>
+    <!-- If you want clean gray UI -->
+    <color name="TP_Gray50">#F5F6F7</color>
+    <color name="TP_Gray200">#E5E7EB</color>
+    <color name="TP_Gray500">#6B7280</color>
 
-    <color name="TP_InputBg">#F3F6FF</color>
-    <color name="TP_Border">#E6ECFF</color>
-    <color name="TP_Divider">#EEF2FF</color>
+
+    <!--구분선-->
+    <color name = "TP_Divider">##3E2723</color>
+    <color name = "TP_InputBg">#4E342E</color>
+    <!--작은 글씨-->
+    <color name = "TP_TextSecondary">#4E342E</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
 </resources>

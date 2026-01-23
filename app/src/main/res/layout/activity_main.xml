@@ -31,19 +31,24 @@
             android:padding="18dp">
 
             <!-- 상단 타이틀 : Tone Pack -->
+
+            <!-- 설정 아이콘 파일명 : ic_setttings -->
+
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tone Pack"
-                android:textStyle="bold"
-                android:textSize="22sp"
-                android:textColor="@color/TP_TextPrimary"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/black_cat"
+                android:gravity="center"
+                android:text="Tone\nPack"
+                android:textColor="#3E2723"
+                android:textSize="70sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- 설정 아이콘 파일명 : ic_setttings -->
             <FrameLayout
                 android:id="@+id/btnSettings"
                 android:layout_width="40dp"
@@ -54,56 +59,50 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="settings"
                     android:padding="9dp"
-                    android:src="@drawable/ic_settings"
-                    android:contentDescription="settings"/>
+                    android:src="@drawable/ic_settings" />
             </FrameLayout>
 
             <!-- 타이틀과 목록 사이 구분선 -->
+
+            <!-- 인사 -->
+
             <View
                 android:id="@+id/divider"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginTop="14dp"
-                android:background="#E9EEFF"
-                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                android:layout_marginTop="36dp"
+                android:background="#4E342E"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/tvHello" />
 
-            <!-- 인사 -->
             <TextView
                 android:id="@+id/tvHello"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="안녕하세요👋"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:textColor="@color/TP_TextPrimary"
-                app:layout_constraintTop_toBottomOf="@id/divider"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/cute"
+                android:gravity="center"
+                android:text="Write smarter messages with the right tone, every time.\nHelping early-career professionals communicate with confidence."
+                android:textColor="#4E342E"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-
-            <TextView
-                android:id="@+id/tvDesc"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="아래에서 원하시는 기능을 선택하세요."
-                android:textSize="13sp"
-                android:textColor="@color/TP_TextSecondary"
-                app:layout_constraintTop_toBottomOf="@id/tvHello"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
             <!-- 기능 목록 3개를 쌓기 -->
+
             <LinearLayout
                 android:id="@+id/listArea"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="60dp"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/tvDesc"
+                app:layout_constraintTop_toBottomOf="@id/divider"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
@@ -111,7 +110,7 @@
                 <LinearLayout
                     android:id="@+id/actionWrite"
                     android:layout_width="match_parent"
-                    android:layout_height="92dp"
+                    android:layout_height="65dp"
                     android:layout_marginBottom="14dp"
                     android:background="@drawable/bg_action_card"
                     android:orientation="horizontal"
@@ -119,8 +118,8 @@
                     android:gravity="center_vertical">
 
                     <FrameLayout
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:background="@drawable/bg_icon_box">
 
                         <ImageView
@@ -142,18 +141,18 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="템플릿 작성하기"
-                            android:textStyle="bold"
-                            android:textSize="16sp"
-                            android:textColor="@color/TP_TextPrimary"/>
-
+                            android:fontFamily="@font/cute"
+                            android:text="Template"
+                            android:textSize="17sp"
+                            android:textColor="#4E342E"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="나만의 말투/격식 템플릿을\n작성하고 관리하세요."
-                            android:textSize="12sp"
-                            android:textColor="@color/TP_TextSecondary"/>
+                            android:layout_marginTop="3dp"
+                            android:fontFamily="@font/cute"
+                            android:text="필요한 템플릿을 직접 작성하고 관리할 수 있습니다."
+                            android:textSize="10dp"
+                            android:textColor="#4E342E"/>
                     </LinearLayout>
 
                     <ImageView
@@ -163,11 +162,15 @@
                         android:contentDescription="go"/>
                 </LinearLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"/>
+
                 <!-- 목록2_커뮤니티 둘러보기-->
                 <LinearLayout
                     android:id="@+id/actionCommunity"
                     android:layout_width="match_parent"
-                    android:layout_height="92dp"
+                    android:layout_height="65dp"
                     android:layout_marginBottom="14dp"
                     android:background="@drawable/bg_action_card"
                     android:orientation="horizontal"
@@ -175,8 +178,8 @@
                     android:gravity="center_vertical">
 
                     <FrameLayout
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:background="@drawable/bg_icon_box">
 
                         <ImageView
@@ -198,18 +201,19 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="커뮤니티 둘러보기"
-                            android:textStyle="bold"
-                            android:textSize="16sp"
-                            android:textColor="@color/TP_TextPrimary"/>
-
+                            android:fontFamily="@font/cute"
+                            android:text="Community"
+                            android:textSize="17sp"
+                            android:textColor="#4E342E"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="다른 사람들의 템플릿을\n보고 공유하세요."
-                            android:textSize="12sp"
-                            android:textColor="@color/TP_TextSecondary"/>
+                            android:layout_marginTop="3dp"
+                            android:fontFamily="@font/cute"
+                            android:text="운영자 추천 템플릿을 확인할 수 있습니다."
+                            android:textSize="10dp"
+                            android:textColor="#4E342E"/>
+
                     </LinearLayout>
 
                     <ImageView
@@ -219,60 +223,67 @@
                         android:contentDescription="go"/>
                 </LinearLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"/>
+
                 <!-- 목록3_마이페이지 들어가기 -->
                 <LinearLayout
                     android:id="@+id/actionMyPage"
                     android:layout_width="match_parent"
-                    android:layout_height="92dp"
+                    android:layout_height="65dp"
                     android:background="@drawable/bg_action_card"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="14dp"
-                    android:gravity="center_vertical">
+                    android:padding="14dp">
 
                     <FrameLayout
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:background="@drawable/bg_icon_box">
 
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:contentDescription="mypage"
                             android:padding="12dp"
-                            android:src="@drawable/ic_user"
-                            android:contentDescription="mypage"/>
+                            android:src="@drawable/ic_user" />
                     </FrameLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:orientation="vertical"
-                        android:paddingStart="12dp"
-                        android:gravity="center_vertical">
+                        android:paddingStart="12dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="마이페이지 들어가기"
-                            android:textStyle="bold"
-                            android:textSize="16sp"
-                            android:textColor="@color/TP_TextPrimary"/>
+                            android:fontFamily="@font/cute"
+                            android:text="My Page"
+                            android:textColor="#4E342E"
+                            android:textSize="17sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="내 정보 관리 및 설정을 확인하세요."
-                            android:textSize="12sp"
-                            android:textColor="@color/TP_TextSecondary"/>
+                            android:layout_marginTop="3dp"
+                            android:fontFamily="@font/cute"
+                            android:text="저장한 템플릿과 활동 기록을 확인할 수 있습니다."
+                            android:textColor="#4E342E"
+                            android:textSize="10dp" />
+
                     </LinearLayout>
 
                     <ImageView
                         android:layout_width="22dp"
                         android:layout_height="22dp"
-                        android:src="@drawable/ic_chevron_right"
-                        android:contentDescription="go"/>
+                        android:contentDescription="go"
+                        android:src="@drawable/ic_chevron_right" />
                 </LinearLayout>
+
 
             </LinearLayout>
 

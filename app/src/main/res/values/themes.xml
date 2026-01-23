@@ -7,12 +7,14 @@
         <item name="colorPrimary">@color/TP_Blue</item>
         <item name="colorOnPrimary">@color/TP_White</item>
 
+
         <item name="colorSecondary">@color/TP_Blue</item>
         <item name="colorOnSecondary">@color/TP_White</item>
 
 
         <item name="colorSurface">@color/TP_White</item>
         <item name="colorOnSurface">@color/TP_TextPrimary</item>
+
 
         <item name="colorSurfaceVariant">@color/TP_White</item>
         <item name="colorOnSurfaceVariant">@color/TP_TextPrimary</item>
