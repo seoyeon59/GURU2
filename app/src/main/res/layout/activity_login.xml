@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
@@ -10,16 +8,28 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="329dp"
-        android:layout_height="73dp"
-        android:layout_marginTop="104dp"
-        android:fontFamily="@font/black_cat"
-        android:text="Tone Pack"
-        android:textColor="#3E2723"
-        android:textSize="65sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tp_title"
+        android:textStyle="bold"
+        android:textSize="46sp"
+        android:textColor="@color/TP_TitleNavy"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="126dp"/>
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tp_subtitle"
+        android:textSize="14sp"
+        android:textColor="#EAF0FF"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"/>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardLogin"
@@ -27,74 +37,67 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="42dp"
         app:cardCornerRadius="26dp"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:cardElevation="14dp"
+        app:cardBackgroundColor="@color/TP_White"
+        android:backgroundTint="@color/TP_White"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="22dp">
+
+            <TextView
+                android:id="@+id/tvLoginTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/login"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/TP_TextPrimary"
+                android:layout_marginBottom="16dp"/>
+
+            <EditText
+                android:id="@+id/etId"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_input"
+                android:hint="아이디"
+                android:inputType="textPersonName"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/TP_TextPrimary"
+                android:textColorHint="#A3B0CC" />
+
+            <EditText
+                android:id="@+id/etPw"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:hint="비밀번호"
+                android:background="@drawable/bg_input"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:inputType="textPassword"
+                android:textColor="@color/TP_TextPrimary"
+                android:textColorHint="#A3B0CC" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_button_blue"
+                android:backgroundTint="@null"
+                android:stateListAnimator="@null"
+                android:text="@string/login"
+                android:textColor="@color/TP_White"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="22dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="278dp">
-
-
-        <EditText
-            android:id="@+id/etNickname"
-            android:layout_width="323dp"
-            android:layout_height="50dp"
-            android:background="@null"
-            android:gravity="start|center_vertical"
-            android:hint="ID"
-            android:inputType="textPersonName"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:textColor="#4E342E"
-            android:textColorHint="#3E2723"
-            android:textSize="16sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="#3E2723" />
-
-
-        <EditText
-            android:id="@+id/etUserId"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:background="@null"
-            android:gravity="start|center_vertical"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:textColor="#4E342E"
-            android:textColorHint="#3E2723"
-            android:textSize="16sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="#3E2723" />
-
-
-        <ImageButton
-            android:id="@+id/btnLogin"
-            android:layout_width="35dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="18dp"
-            android:background="@null"
-            android:contentDescription="login"
-            android:src="@drawable/ic_neko"
-            android:tint="#524744" />
-
-
-    </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
