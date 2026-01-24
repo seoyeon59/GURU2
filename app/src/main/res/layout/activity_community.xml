@@ -113,13 +113,13 @@
                     android:background="#33FFFFFF"/>
 
                 <TextView
-                    android:layout_width="88dp"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:fontFamily="@font/cute"
+                    android:gravity="center"
                     android:text="작성자"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <!-- 커뮤니티 글 목록 -->

@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:fontFamily="@font/cute"
-        android:textColor="@color/TP_Gray200"
+        android:textColor="@color/TP_TextSecondary"
         android:textSize="14sp"
         android:text="작성자" />
 </LinearLayout>
