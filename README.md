@@ -100,6 +100,6 @@ PW: guru2
 3. 조직 문화 개선: 세대 및 직급 간 소통 격차를 줄이는 '안전한 소통' 플랫폼 역할
 
 
-<hr style="border: 0; height: 1px; background: #ccc;">
+<hr style="background-color: #eee; height: 1px; border: 0;">
 
 TonePack - Your Smart Communication Companion.
